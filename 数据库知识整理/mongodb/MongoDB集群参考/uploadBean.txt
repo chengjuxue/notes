@@ -1,0 +1,138 @@
+/*
+ * 项目名:      农夫山泉小瓶水系统
+ * 文件名:      UploadPhoto.java
+ * 类名:        UploadPhoto
+ *
+ * 版权声明:
+ *      本系统的所有内容，包括源码、页面设计，文字、图像以及其他任何信息，
+ *      如未经特殊说明，其版权均属农夫山泉股份有限公司所有。
+ *
+ *      Copyright (c) 2013 农夫山泉股份有限公司
+ *      版权所有
+ */
+package com.nf.posterminal.action;
+
+import java.io.Serializable;
+
+/**
+ * 类名:		UploadPhoto
+ * 描述:		上传照片实体模型
+ * @author 	ziluncao
+ *
+ */
+public class UploadPhotoJson implements Serializable {
+
+    /**
+     * 变量名:		serialVersionUID
+     * 描述:			序列化
+     * 取值含义:		序列化
+     */
+    private static final long serialVersionUID = 2256425899611616138L;
+
+    private String            shop_Id; //门店ID
+
+    private String            shopName;//门店名称
+
+    private int               userId;//用户ID
+
+    private String            userName;//用户名称
+
+    private int               photoTypeId;//照片类型ID
+
+    private String            photoTypeName;//照片类型名称
+
+    private long              photoSize;//照片大小
+
+    private String            takePhotoTime;//拍照时间
+
+    private String            positionId;//职位ID
+
+    private byte[]            byteImage;//照片本身的字节流
+
+
+
+    public String getShop_Id() {
+        return shop_Id;
+    }
+
+    public void setShop_Id(String shop_Id) {
+        this.shop_Id = shop_Id;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getPhotoTypeId() {
+        return photoTypeId;
+    }
+
+    public void setPhotoTypeId(int photoTypeId) {
+        this.photoTypeId = photoTypeId;
+    }
+
+    public String getPhotoTypeName() {
+        return photoTypeName;
+    }
+
+    public void setPhotoTypeName(String photoTypeName) {
+        this.photoTypeName = photoTypeName;
+    }
+
+    public long getPhotoSize() {
+        return photoSize;
+    }
+
+    public void setPhotoSize(long photoSize) {
+        this.photoSize = photoSize;
+    }
+
+    public String getTakePhotoTime() {
+        return takePhotoTime;
+    }
+
+    public void setTakePhotoTime(String takePhotoTime) {
+        this.takePhotoTime = takePhotoTime;
+    }
+
+    public String getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(String positionId) {
+        this.positionId = positionId;
+    }
+
+    public byte[] getByteImage() {
+        return byteImage;
+    }
+
+    public void setByteImage(byte[] byteImage) {
+        this.byteImage = byteImage;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+}

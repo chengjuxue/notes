@@ -1,0 +1,25 @@
+服务器启动：
+D:\mongdb\mongodb-win32-x86_64-2008plus-2.6.6\bin\mongod.exe --dbpath D:\mongdb\data\db
+
+在windows中设置服务：
+D:\mongdb\mongodb-win32-x86_64-2008plus-2.6.6\bin\mongod.exe -dbpath "D:\mongdb\data\db"  --logpath "D:\mongdb\data\log\mongodb.log"  --install --serviceName "MongoDB" 
+
+启动mongdb的客户端：
+D:\mongdb\mongodb-win32-x86_64-2008plus-2.6.6\bin\mongo
+
+提示：windows无法停止mongodb服务错误109管道已结束
+删除C:\mongodb\data\db\mongod.lock文件(
+     mongod.lock文件是mongo服务端启动后在硬盘中创建的一个锁文件，
+     如果你正常退出mongod服务，该文件即使还存在，也不会影响下一次启动mongod服务的。)
+
+
+启动MongoDB的命令为：net start MongoDB
+
+停止MongODB的命令为：net stop MongoDB
+
+删除MongoDB的命令为：mongod --remove
+
+
+
+
+
