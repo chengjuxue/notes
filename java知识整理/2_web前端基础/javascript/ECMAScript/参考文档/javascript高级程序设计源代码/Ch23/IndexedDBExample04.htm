@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IndexedDB Example</title>
+</head>
+<body>
+    <p>This example works in Firefox 4+ and Chrome. Note that Firefox does not allow local files to access <code>indexedDB</code>, so you'll need to run this example through a web server to get it to work on Firefox (Chrome does not have this restriction).</code></p>
+    <p>Open up the console to see the results. You'll see only two items as opposed to the previous example.</p>
+    <script>
+    (function(){
+    
+        var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB,
+            IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction,
+            IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange,
+            request,
+            store,
+            database,
+            users = [
+                {
+                    username: "007",
+                    firstName: "James",
+                    lastName: "Bond",
+                    password: "foo"
+                },
+                {
+                    username: "ace",
+                    firstName: "John",
+                    lastName: "Smith",
+                    password: "bar"
+                },
+                {
+                    username: "foobar",
+                    firstName: "Michael",
+                    lastName: "Johnson",
+                    password: "secret"
+                }               
+            ];
+            
+        request = indexedDB.open("example");
+        request.onerror = function(event){
+            alert("Something bad happened while trying to open: " + event.target.errorCode);
+        };
+        request.onsuccess = function(event){
+            database = event.target.result;
+            initializeDatabase();
+        };    
+    
+        function initializeDatabase(){
+            if (database.version != "1.0"){
+                request = database.setVersion("1.0");
+                request.onerror = function(event){
+                    alert("Something bad happened while trying to set version: " + event.target.errorCode);
+                };
+                request.onsuccess = function(event){
+                    store = database.createObjectStore("users", { keyPath: "username" });
+                    users.forEach(function(user){
+                        store.add(user);
+                    });        
+                    outputValues();
+                };
+            } else {
+                outputValues();
+            }
+        }
+                
+        function outputValues(){
+            var store = database.transaction("users").objectStore("users"),
+                range = IDBKeyRange.bound("007", "ace"),
+                request = store.openCursor(range);
+
+            request.onsuccess = function(event){
+                var cursor = event.target.result;
+                if (cursor){  //always check
+                    console.log("Key: " + cursor.key + ", Value: " + JSON.stringify(cursor.value));
+                    cursor.continue();   //go to the next one
+                } else {
+                    console.log("Done!");
+                }
+            };
+
+            request.onfailure = function(event){
+                console.error("Iteration did not succeed.");
+            };
+        }
+    
+    })();
+
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

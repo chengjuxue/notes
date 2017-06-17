@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectbox Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    
+    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">            
+        <div>
+            <label for="selLocation">Where do you want to live?</label>
+            <select name="location" id="selLocation">
+                <option value="Sunnyvale, CA">Sunnyvale</option>
+                <option value="Los Angeles, CA">Los Angeles</option>
+                <option value="Mountain View, CA">Mountain View</option>
+                <option value="">China</option>
+                <option>Australia</option>
+            </select>
+        </div>
+        <div>
+            <input type="button" value="Select first option" id="btnFirst" />
+            <input type="button" value="Select second option" id="btnSecond" />
+            <input type="button" value="Get selected option" id="btnSelected" />
+        </div>
+    </form>     
+    <script type="text/javascript">
+        (function(){
+
+            var btn1 = document.getElementById("btnFirst"),
+                btn2 = document.getElementById("btnSecond"),
+                btn3 = document.getElementById("btnSelected"),
+                selectbox = document.getElementById("selLocation");
+
+            EventUtil.addHandler(btn1, "click", function(event){
+                selectbox.selectedIndex = 0;
+            });
+            EventUtil.addHandler(btn2, "click", function(event){
+                selectbox.selectedIndex = 1;
+            });
+            EventUtil.addHandler(btn3, "click", function(event){
+                var selIndex = selectbox.selectedIndex;
+                var selOption = selectbox.options[selIndex];
+                alert("Selected index: " + selectbox.selectedIndex + "\nSelected text: " + selOption.text + "\nSelected value: " + selOption.value);
+            });
+            
+        })();
+    
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

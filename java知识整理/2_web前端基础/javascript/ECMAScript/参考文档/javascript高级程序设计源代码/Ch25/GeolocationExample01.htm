@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation Example</title>
+</head>
+<body>
+    <p>This page is a demonstration of the Geolocation API. This works in the latest versions of all major browsers, but you may need to place this file on a web server to get it to work.</p>
+    <script>
+        window.onload = function(){
+            document.getElementById("geo-btn").onclick = function(){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    document.getElementById("output").innerHTML = "Latitude is " + position.coords.latitude +
+                        "<br>Longitude is " + position.coords.longitude;
+                }, function(error){
+                    document.getElementById("output").innerHTML = error.message || "An error occurred while trying to get location.";
+                });
+            };
+        };
+        
+    </script>
+    
+    <p><script>document.write(navigator.geolocation ? "Your browser supports the Geolocation API." : "Your browser does not support the Geolocation API.");</script></p>
+    <input type="button" value="Get Location" id="geo-btn">
+    <div id="output"></div>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

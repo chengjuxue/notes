@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scroll Event Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <p style="height: 10000px">Scroll event example - scroll the browser window.</p>
+    <script type="text/javascript">
+        EventUtil.addHandler(window, "scroll", function(event){
+            if (document.compatMode == "CSS1Compat"){
+                alert(document.documentElement.scrollTop);
+            } else {
+                alert(document.body.scrollTop);
+            }
+        });
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

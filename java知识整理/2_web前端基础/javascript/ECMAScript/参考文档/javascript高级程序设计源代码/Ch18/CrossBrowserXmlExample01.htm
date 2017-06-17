@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cross-Browser XML Example</title>
+</head>
+<body>
+    <p>This example should work in all browsers.</p>
+    <script type="text/javascript">
+    
+        function createDocument(){
+            if (typeof arguments.callee.activeXString != "string"){
+                var versions = ["MSXML2.DOMDocument.6.0", "MSXML2.DOMDocument.3.0",
+                                "MSXML2.DOMDocument"];
+        
+                for (var i=0,len=versions.length; i < len; i++){
+                    try {
+                        var xmldom = new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        return xmldom;
+                    } catch (ex){
+                        //skip
+                    }
+                }
+            }
+        
+            return new ActiveXObject(arguments.callee.activeXString);
+        }
+    
+        function parseXml(xml){
+            var xmldom = null;
+            
+            if (typeof DOMParser != "undefined"){
+                xmldom = (new DOMParser()).parseFromString(xml, "text/xml");
+                var errors = xmldom.getElementsByTagName("parsererror");
+                if (errors.length){
+                    throw new Error("XML parsing error:" + errors[0].textContent);
+                }        
+            } else if (typeof ActiveXObject != "undefined"){
+                xmldom = createDocument();
+                xmldom.loadXML(xml);
+                if (xmldom.parseError != 0){
+                    throw new Error("XML parsing error: " + xmldom.parseError.reason);
+                }
+            } else {
+                throw new Error("No XML parser available.");
+            }
+            
+            return xmldom;
+        }
+    
+        var xmldom = null;
+        try {
+            xmldom = parseXml("<root><child/></root>");
+        } catch (ex){
+            alert(ex.message);
+        }
+        
+        alert(xmldom.documentElement.tagName);  //"root"
+        alert(xmldom.documentElement.firstChild.tagName); //"child"
+        
+        var anotherChild = xmldom.createElement("child");
+        xmldom.documentElement.appendChild(anotherChild);
+        
+        var children = xmldom.getElementsByTagName("child");
+        alert(children.length);   //2        
+
+        try {
+            xmldom = parseXml("<root>");
+        } catch (ex){
+            alert("Parsing error: " + ex.message);
+        }
+
+
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Console Logging Example</title>
+</head>
+<body>
+    <p>View debugging messages to the right.</p>
+    <script type="text/javascript">
+        function log(message){                    
+            var console = document.getElementById("debuginfo");
+            if (console === null){
+                console = document.createElement("div");
+                console.id = "debuginfo";
+                console.style.background = "#dedede";
+                console.style.border = "1px solid silver";
+                console.style.padding = "5px";
+                console.style.width = "400px";
+                console.style.position = "absolute";
+                console.style.right = "0px";
+                console.style.top = "0px";
+                document.body.appendChild(console);
+            }
+            console.innerHTML += "<p>" + message + "</p>";
+        }
+        
+        function sum(num1, num2){
+            log("Entering sum(), arguments are " + num1 + "," + num2);
+        
+            log("Before calculation");
+            var result = num1 + num2;
+            log("After calculation");
+        
+            log("Exiting sum()");
+            return result;
+        }
+        
+        var result = sum(10, 23);
+
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

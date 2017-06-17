@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gesture Events Example</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+<body>
+    <p>Touch anywhere on the screen with two fingers. This only works on an iPhone or iPod Touch running iPhone 2.x software.</p>
+    <div id="output"> 
+    </div>
+    <script type="text/javascript">
+        function handleGestureEvent(event){        
+            var output = document.getElementById("output");
+            switch(event.type){
+                case "gesturestart":
+                    output.innerHTML = "Gesture started (rotation=" + event.rotation + ",scale=" + event.scale + ")";
+                    break;
+                case "gestureend":
+                    output.innerHTML += "<br>Gesture ended (rotation=" + event.rotation + ",scale=" + event.scale + ")";
+                    break;
+                case "gesturechange":
+                    output.innerHTML += "<br>Gesture changed (rotation=" + event.rotation + ",scale=" + event.scale + ")";
+                    break;
+            }
+        }
+        
+        document.addEventListener("gesturestart", handleGestureEvent, false);
+        document.addEventListener("gestureend", handleGestureEvent, false);
+        document.addEventListener("gesturechange", handleGestureEvent, false);
+
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

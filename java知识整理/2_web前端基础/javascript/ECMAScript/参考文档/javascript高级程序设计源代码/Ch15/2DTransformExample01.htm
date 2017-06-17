@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Canvas Transform Example</title>
+ </head>
+ <body>
+    <canvas id="drawing" width="200" height="200">Your browser doesn't support the canvas tag.</canvas>
+    <script type="text/javascript">
+        window.onload = function(){
+            var drawing = document.getElementById("drawing");
+            
+            //make sure <canvas> is completely supported
+            if (drawing.getContext){
+            
+                var context = drawing.getContext("2d");
+                
+                //start the path
+                context.beginPath();
+                
+                //draw outer circle
+                context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+                
+                //draw inner circle
+                context.moveTo(194, 100);
+                context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+
+                //move center to (100,100)
+                context.translate(100, 100);
+                context.rotate(1);
+                
+                //draw minute hand
+                context.moveTo(0,0);
+                context.lineTo(0, -85);
+                
+                //draw hour hand
+                context.moveTo(0, 0);
+                context.lineTo(-65, 0);
+                
+                context.stroke();
+
+            }                
+        };
+
+    </script>
+    	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

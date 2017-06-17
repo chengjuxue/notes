@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/>
+<style type="text/css">
+
+.custom-date-style {
+	background-color: red !important;
+}
+
+.input{	
+}
+.input-wide{
+	width: 500px;
+}
+
+</style>
+</head>
+<body>
+	
+	<p><a href="http://xdsoft.net/jqplugins/datetimepicker/">Homepage</a></p>
+	<h3>DateTimePicker</h3>
+	<input type="text" value="" id="datetimepicker"/><br><br>
+ 
+	<h3>TimePicker</h3>
+	<input type="text" id="datetimepicker1"/><br><br>
+	<h3>DatePicker</h3>
+	<input type="text" id="datetimepicker2"/><br><br>
+	
+</body>
+<script src="./jquery.js"></script>
+<script src="build/jquery.datetimepicker.full.js"></script>
+<script>
+
+
+$("#datetimepicker").datetimepicker({
+    weekStart:1,
+    todayBtn:1,
+    autoclose:1,
+    todayHighlight:1,
+    startView:2,
+    forceParse:0,
+    showMeridian:1,
+    format:"Y-m-d H:i"});
+
+
+$("#datetimepicker1").datetimepicker({
+    language:"zh-CN",
+    weekStart:1,
+    todayBtn:1,
+    autoclose:1,
+    todayHighlight:1,
+    startView:1,
+    minView:0,
+    maxView:1,
+    forceParse:0,
+    format:'H:i'});
+$('#datetimepicker1').datetimepicker({
+	datepicker:false,
+	format:'H:i',
+	step:5
+});
+
+$("#datetimepicker2").datetimepicker({
+    language:"zh-CN",
+    weekStart:1,
+    todayBtn:1,
+    autoclose:1,
+    todayHighlight:1,
+    startView:2,
+    minView:2,
+    forceParse:0,
+    format:"Y-m-d"});
+
+
+
+
+</script>
+</html>

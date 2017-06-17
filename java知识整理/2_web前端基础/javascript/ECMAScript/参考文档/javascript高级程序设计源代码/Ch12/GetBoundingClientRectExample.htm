@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getBoundingClientRect() Example</title>
+    <script type="text/javascript">
+    
+        function getElementLeft(element){
+            var actualLeft = element.offsetLeft;
+            var current = element.offsetParent;
+        
+            while (current !== null){        
+                actualLeft += current.offsetLeft;
+                current = current.offsetParent;
+            }
+        
+            return actualLeft;
+        }
+    
+        function getElementTop(element){
+            var actualTop = element.offsetTop;
+            var current = element.offsetParent;
+        
+            while (current !== null){        
+                actualTop += current. offsetTop;
+                current = current.offsetParent;
+            }
+        
+            return actualTop;
+        }
+    
+    function getBoundingClientRect(element){
+    
+        var scrollTop = document.documentElement.scrollTop;
+        var scrollLeft = document.documentElement.scrollLeft;
+        
+        if (element.getBoundingClientRect){
+            if (typeof arguments.callee.offset != "number"){
+                var temp = document.createElement("div");
+                temp.style.cssText = "position:absolute;left:0;top:0;";
+                document.body.appendChild(temp);
+                arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
+                document.body.removeChild(temp);
+                temp = null;
+            }
+    
+            var rect = element.getBoundingClientRect();
+            var offset = arguments.callee.offset;
+    
+            return {
+                left: rect.left + offset,
+                right: rect.right + offset,
+                top: rect.top + offset,
+                bottom: rect.bottom + offset
+    
+            };
+        } else {
+    
+            var actualLeft = getElementLeft(element);
+            var actualTop = getElementTop(element);
+    
+           return {
+                left: actualLeft - scrollLeft,
+                right: actualLeft + element.offsetWidth - scrollLeft,
+                top: actualTop - scrollTop,
+                bottom: actualTop + element.offsetHeight - scrollTop
+            }
+        }
+    }
+
+    
+        function getDimensions(){
+            var rect = getBoundingClientRect(document.getElementById("myDiv"));
+            alert("left: " + rect.left + "\nright: " + rect.right  + "\ntop: " + rect.top + "\nbottom: " + rect.bottom);        
+        }
+        
+        
+    
+
+    </script>
+</head>
+<body style="padding: 10px; margin: 0">
+    <div style="margin: 20px">
+        <div style="padding: 20px">
+            <div id="myDiv" style="width: 100px; height: 50px; background-color: red; border: 1px solid black"></div>
+        </div>
+    </div>
+    <input type="button" value="Get Element Dimensions" onclick="getDimensions()" />
+
+    
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contains Example 2</title>
+    <script type="text/javascript" src="client.js"></script>
+</head>
+<body>
+
+    <input type="button" value="Does html contain body?" onclick="getContains()">
+
+    <script type="text/javascript">
+    
+        function contains(refNode, otherNode){
+            if (typeof refNode.contains == "function" && 
+                    (!client.engine.webkit || client.engine.webkit >= 522)){
+                return refNode.contains(otherNode);
+            } else if (typeof refNode.compareDocumentPosition == "function"){
+                return !!(refNode.compareDocumentPosition(otherNode) & 16);
+            } else {
+                var node = otherNode.parentNode;
+                do {
+                    if (node === refNode){
+                        return true;
+                    } else {
+                        node = node.parentNode;
+                    }
+                } while (node !== null);
+                return false;
+            }
+        }
+    
+        function getContains(){
+            alert(contains(document.documentElement, document.body));
+            
+        }
+
+    </script>
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

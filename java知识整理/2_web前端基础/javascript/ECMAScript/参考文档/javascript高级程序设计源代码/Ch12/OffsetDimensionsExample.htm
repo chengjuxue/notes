@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Offset Dimensions Example</title>
+    <script type="text/javascript">
+    
+        function getElementLeft(element){
+            var actualLeft = element.offsetLeft;
+            var current = element.offsetParent;
+        
+            while (current !== null){        
+                actualLeft += current.offsetLeft;
+                current = current.offsetParent;
+            }
+        
+            return actualLeft;
+        }
+    
+        function getElementTop(element){
+            var actualTop = element.offsetTop;
+            var current = element.offsetParent;
+        
+            while (current !== null){        
+                actualTop += current.offsetTop;
+                current = current.offsetParent;
+            }
+        
+            return actualTop;
+        }
+    
+    
+        function getOffsetHeight(){
+            alert(document.getElementById("myDiv").offsetHeight);
+        }
+    
+        function getOffsetWidth(){
+            alert(document.getElementById("myDiv").offsetWidth);
+        }
+    
+        function getOffsetLeft(){
+            alert(document.getElementById("myDiv").offsetLeft);
+        }
+    
+        function getOffsetTop(){
+            alert(document.getElementById("myDiv").offsetTop);
+        }
+        
+        function getActualLeft(){
+            alert(getElementLeft(document.getElementById("myDiv")));
+        }
+        
+        function getActualTop(){
+            alert(getElementTop(document.getElementById("myDiv")));
+        }
+        
+        
+    
+
+    </script>
+</head>
+<body>
+    <div style="margin: 20px">
+        <div style="padding: 20px">
+            <div id="myDiv" style="width: 100px; height: 50px; background-color: red; border: 1px solid black"></div>
+        </div>
+    </div>
+    <input type="button" value="Get Offset Height" onclick="getOffsetHeight()">
+    <input type="button" value="Get Offset Width" onclick="getOffsetWidth()">
+    <input type="button" value="Get Offset Left" onclick="getOffsetLeft()">
+    <input type="button" value="Get Offset Top" onclick="getOffsetTop()">
+    <br>
+    <input type="button" value="Get Actual Left" onclick="getActualLeft()">
+    <input type="button" value="Get Actual Top" onclick="getActualTop()">
+    
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>

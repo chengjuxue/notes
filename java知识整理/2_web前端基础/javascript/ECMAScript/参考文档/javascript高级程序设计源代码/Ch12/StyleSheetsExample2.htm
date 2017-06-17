@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Style Sheets Example</title>
+    <link rel="stylesheet" title="blah" type="text/css" href="stylesheet1.css">
+    <link rel="alternate stylesheet" type="text/css" href="stylesheet2.css">    
+    <style type="text/css">
+        #myDiv {
+            background-color: blue;
+            width: 100px;
+            height: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+    
+        function getStyleSheet(element){
+            return element.sheet || element.styleSheet;
+        }
+
+    
+        function outputStyleSheet(){            
+            //get the style sheet for the first <link/> element
+            var link = document.getElementsByTagName("link")[0];
+            var sheet = getStyleSheet(link);
+            alert(sheet.href);
+        }
+    </script>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <input type="button" value="Output Style Sheet" onclick="outputStyleSheet()">
+    
+    
+	<center>
+  <div style="font-size:15px; font-weight:bold; text-align:center; line-height:25px;">
+     源码由<a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站整理（<a href="http://www.jq-school.com" target="_blank">http://www.jq-school.com</a>）学习交流QQ群<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f221dd676cd5f7f51f6b580ff8fe1bdd2fefe911ae0e1137a6f79c58d6e11ebf"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Jquery学堂QQ⑧群" title="Jquery学堂QQ⑧群"></a></div>
+</center>
+</body>
+</html>
