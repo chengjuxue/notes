@@ -1,0 +1,16 @@
+pre-   表示动作之前的前缀
+post-  表示动作之后的前缀
+destroy 销毁
+init 初始化
+
+handle/handler  处理
+Config/configuration  配置
+Annotation 注解
+Properties  属性
+Factory 工厂
+Filter 过滤
+include/exclude包含和不包含
+Service/Repository/Mapper/Controller/Component  常用组件名
+
+
+  
