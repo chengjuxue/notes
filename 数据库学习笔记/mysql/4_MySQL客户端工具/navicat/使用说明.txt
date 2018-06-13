@@ -1,7 +1,7 @@
-1. 安装原版应用程序。
-2. 使用管理员权限运行注册机程序。
-3. 在注册机中选择你已经安装的 Navicat 程序。
-4. 在注册机中点击“补丁”按钮并选择已安装的 Navicat 程序的可执行文件进行补丁。(注意: 如果 Navicat 程序正在运行，则必须先关闭)
-5. 在注册机中点击“生成”按钮生成序列号与激活文件(license_file)，请保存好激活文件。
-6. 使用防火墙屏蔽 Navicat 程序或者直接断开网络连接。
-7. 运行 Navicat 程序，在激活对话框中输入注册机生成的序列号。然后，请按住键盘的“Ctrl+Shift”键并使用鼠标点击“激活”按钮，这时会显示一个打开文件对话框，请在该对话框中选择第 5 步中保存的激活文件，如果一切正常，程序将会被成功激活。
+1. 首先使用cd命令切换到当前Navicat Premium 12破解补丁文件夹位置，如cd /d E:\Navicat_code；
+2. 然后用Patch.exe给Navicat的主程序即navicat.exe打个补丁，换掉其中的公钥，执行Patch.exe <navicat.exe path>命令，<navicat.exe path>就是navicat.exe的完整路径，需要加引号，
+   如Patch.exe "C:\Software\Navicat Premium 12\navicat.exe"（请仔细看好命令格式），之后在当前目录下会生成对应的私钥文件RegPrivateKey.pem；
+3. 接着用Keygen.exe生成Navicat 12的注册码，执行Keygen.exe RegPrivateKey.pem命令（请仔细看好命令格式），根据提示输入任意用户名和任意组织名，将生成了注册码，此时要求填入请求码：
+
+4.断开网络连接（直至激活成功），断开网络连接（直至激活成功），断开网络连接（直至激活成功），打开Navicat，点击菜单栏的帮助，选择注册，在注册界面填入上一步生成的注册码，然后点击激活：
+  手动注册，需要通过第三步最后贴入请求码得到响应码
